@@ -1,6 +1,10 @@
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import parsers.LogParser
+import java.nio.file.FileSystems
+
+
+
 
 internal class LogTests {
 
@@ -17,8 +21,9 @@ jettyThreadPool-181 43
 jettyThreadPool-179 37
 jettyThreadPool-183 37
        """.trimIndent()
+        val fileSeparator = FileSystems.getDefault().separator
 
-        val logs = LogParser("src\\main\\resources\\hz_all_nodes.log").parseFile()
+        val logs = LogParser("src${fileSeparator}main${fileSeparator}resources${fileSeparator}hz_all_nodes.log").parseFile()
         val topN = LogsAnalyzer.findTopNThreads(logs).joinToString(separator = "\n") { "${it.first} ${it.second}" }
 
         Assertions.assertEquals(answer, topN)

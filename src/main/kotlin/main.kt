@@ -1,7 +1,9 @@
 import parsers.LogParser
 import java.io.FileNotFoundException
+import java.nio.file.FileSystems
 
-const val defaultFilePath = "src\\main\\resources\\hz_all_nodes.log"
+val fileSeparator = FileSystems.getDefault().separator
+val defaultFilePath = "src${fileSeparator}main${fileSeparator}resources${fileSeparator}hz_all_nodes.log"
 
 fun main(args: Array<String>) {
     try {
