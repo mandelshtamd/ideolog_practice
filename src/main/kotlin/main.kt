@@ -15,5 +15,8 @@ fun main(args: Array<String>) {
         }
     } catch(ex: FileNotFoundException) {
         println(ex.message)
+    } catch(ex: Exception) {
+        println(ex.message)
+        println(ex.stackTrace)
     }
 }
